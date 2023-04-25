@@ -90,21 +90,21 @@ namespace SharpCradle
 "@
 
 Add-Type -TypeDefinition $cradle -Language CSharp
-$arguments = @()
-
-# Add the mandatory argument - $uri
-$arguments += $uri
-
-# Check and add additional arguments
-if ($argument1) { $arguments += $argument1 }
-if ($argument2) { $arguments += $argument2 }
-if ($argument3) { $arguments += $argument3 }
-if ($argument4) { $arguments += $argument4 }
-# Add more arguments as needed
-# if ($argumentX) { $arguments += $argumentX }
-# Call the Main method with the arguments array
+if ($argument1 -and $argument2 -and $argument3)
 {
-	[SharpCradle.Program]::Main($arguments)
+	[SharpCradle.Program]::Main("$uri", "$argument1", "$argument2", "$argument3")
+}
+elseif ($argument1 -and $argument2)
+{
+	[SharpCradle.Program]::Main("$uri", "$argument1", "$argument2")
+}
+elseif ($argument1)
+{
+	[SharpCradle.Program]::Main("$uri", "$argument1")
+}
+else
+{
+	[SharpCradle.Program]::Main("$uri")
 }
 
 }
