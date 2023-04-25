@@ -19,7 +19,7 @@ Param
         $argument2,
 	[string]
         $argument3,
-	[string],
+	[string]
 	$argument4
 )
 Invoke-BlockETW
