@@ -20,7 +20,9 @@ Param
 	[string]
         $argument3,
 	[string]
-	$argument4
+	$argument4,
+	[string]
+	$argument5
 )
 Invoke-BlockETW
 
@@ -92,7 +94,11 @@ namespace SharpCradle
 "@
 
 Add-Type -TypeDefinition $cradle -Language CSharp
-if ($argument1 -and $argument2 -and $argument3 -and $argument4)
+if ($argument1 -and $argument2 -and $argument3 -and $argument4 -and $argument5)
+{
+	[SharpCradle.Program]::Main("$uri", "$argument1", "$argument2", "$argument3", "$argument4", "$argument5")
+}
+elseif ($argument1 -and $argument2 -and $argument3 -and $argument4)
 {
 	[SharpCradle.Program]::Main("$uri", "$argument1", "$argument2", "$argument3", "$argument4")
 }
